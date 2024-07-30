@@ -1,0 +1,18 @@
+NUMERICAL_FEATURES:
+  Dependents: float64
+  ApplicantIncome: int64
+  CoapplicantIncome: float64
+  LoanAmount: float64
+  Loan_Amount_Term: float64
+  Credit_History: float64
+
+CATEGORICAL_FEATURES:
+  Gender: object
+  Married: object
+  Education: object
+  Self_Employed: object
+  Property_Area: object
+
+TARGET_COLUMN:
+  name: Loan_Status
+  

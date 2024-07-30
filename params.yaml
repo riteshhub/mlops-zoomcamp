@@ -1,0 +1,16 @@
+XGBClassifier:
+  n_estimators: 2
+  max_depth: 2
+  learning_rate: 1
+  objective: binary:hinge
+
+acceptance_criteria:
+  - name: "accuracy_score"
+    condition: "greater_than"
+    value: 0.55
+  - name: "f1_score"
+    condition: "greater_than"
+    value: 0.60
+  - name: "recall_score"
+    condition: "greater_than"
+    value: 0.65

@@ -1,0 +1,44 @@
+mlflow_uri: http://localhost:5000/
+fastapi_host: http://localhost
+fastapi_port: 8001
+usecase_name: loan_approval_prediction
+mlflow_experiment_name: ${.usecase_name}_experiment
+mlflow_experiment_run_name_mode: username
+
+artifacts_root: artifacts
+
+data_preprocessing:
+  step_name: preprocess
+  root_dir: ${..artifacts_root}/data_preprocessing
+  input_data_path: dataset/LoanApprovalStatus.csv
+  train_data_path: ${.root_dir}/train
+  validation_data_path: ${.root_dir}/validation
+  test_data_path: ${.root_dir}/test
+  train_validation_test_split: 0.7:0.1:0.2
+
+model_training:
+  step_name: train
+  root_dir: ${..artifacts_root}/model_training
+  model_name: model.joblib
+
+model_evaluation:
+  step_name: evaluate
+  root_dir: ${..artifacts_root}/model_evaluation
+  test_data_path: ${..data_preprocessing.test_data_path}
+  model_path: ${..model_training.root_dir}/${..model_training.model_name}
+  metric_file_name: ${.root_dir}/metrics.json
+
+model_registry:
+  step_name: register
+  register_model_name: loan_approval_prediction_model
+
+model_deployment:
+  step_name: deploy
+  register_model_name: loan_approval_prediction_model
+
+model_observability:
+  project_id: hgfuhhj198u9
+  dashboard_name: mlops_dashboard
+  root_dir: ${..artifacts_root}/model_observability
+  input_data_path: dataset/LoanApprovalStatus.csv
+  report_path: ${.root_dir}
