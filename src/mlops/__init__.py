@@ -36,7 +36,7 @@ class ColorFormatter(logging.Formatter):
         self._style._fmt = self._fmts.get(record.levelno)
         return super().format(record)
 
-logger = logging.getLogger("mlDatabricksLogger")
+logger = logging.getLogger("mlopsLogger")
 logger.setLevel(logging.INFO)
 sh = logging.StreamHandler()
 fh = logging.FileHandler(log_filepath)

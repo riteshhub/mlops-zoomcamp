@@ -1,7 +1,5 @@
 """Module to take care of creating a singleton of the execution environment class."""
-import logging
 import os
-from re import S
 from typing import Optional
 from delta import configure_spark_with_delta_pip
 from pyspark import SparkConf
