@@ -118,7 +118,7 @@ def mlflow_run_manager(
                 f"Initiating new MLflow PARENT run '{parent_run_name}' with run_id '{parent_run_id}'"
             )
             mlflow.log_param("parent_run_name", parent_run_name)
-            mlflow.autolog(log_models=False)
+            mlflow.autolog(log_models=False, silent=True)
 
     mlflow.end_run()
     with mlflow.start_run(experiment_id=experiment_id, run_id=parent_run_id):
@@ -131,8 +131,8 @@ def mlflow_run_manager(
             mlflow.log_param("its_parent_run_name", parent_run_name)
 
     run = mlflow.start_run(run_id=child_run_id)
-    mlflow.autolog(log_models=False)
-    mlflow.autolog(disable=True)
+    mlflow.autolog(log_models=False, silent=True)
+    mlflow.autolog(disable=True, silent=True)
 
     return run
 

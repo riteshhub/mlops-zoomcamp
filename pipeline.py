@@ -4,7 +4,9 @@ from mlops.steps.step_03_model_evaluation import ModelEvaluationStep
 from mlops.steps.step_04_model_registry import ModelRegistryStep
 from mlops.steps.step_05_model_deployment import ModelDeploymentStep
 from mlops import logger
+import warnings
 
+warnings.filterwarnings('ignore')
 
 STAGE_NAME = "Data PreProcessing stage"
 try:
